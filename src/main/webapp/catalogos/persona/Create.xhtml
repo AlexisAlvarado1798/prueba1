@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.CreatePersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_pkPersona}" for="pkPersona" />
+                    <h:inputText id="pkPersona" value="#{personaController.selected.pkPersona}" title="#{resourcesBundle.CreatePersonaTitle_pkPersona}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_pkPersona}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_identificacion}" for="identificacion" />
+                    <h:inputText id="identificacion" value="#{personaController.selected.identificacion}" title="#{resourcesBundle.CreatePersonaTitle_identificacion}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_identificacion}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_nombres}" for="nombres" />
+                    <h:inputText id="nombres" value="#{personaController.selected.nombres}" title="#{resourcesBundle.CreatePersonaTitle_nombres}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_nombres}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{personaController.selected.apellidos}" title="#{resourcesBundle.CreatePersonaTitle_apellidos}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_fechanacimiento}" for="fechanacimiento" />
+                    <h:inputText id="fechanacimiento" value="#{personaController.selected.fechanacimiento}" title="#{resourcesBundle.CreatePersonaTitle_fechanacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{personaController.selected.direccion}" title="#{resourcesBundle.CreatePersonaTitle_direccion}" />
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{personaController.selected.correo}" title="#{resourcesBundle.CreatePersonaTitle_correo}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_correo}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_fkEstadocivil}" for="fkEstadocivil" />
+                    <h:selectOneMenu id="fkEstadocivil" value="#{personaController.selected.fkEstadocivil}" title="#{resourcesBundle.CreatePersonaTitle_fkEstadocivil}" >
+                        <f:selectItems value="#{estadocivilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_fkGenero}" for="fkGenero" />
+                    <h:selectOneMenu id="fkGenero" value="#{personaController.selected.fkGenero}" title="#{resourcesBundle.CreatePersonaTitle_fkGenero}" >
+                        <f:selectItems value="#{generoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_fkMunicipioorigen}" for="fkMunicipioorigen" />
+                    <h:selectOneMenu id="fkMunicipioorigen" value="#{personaController.selected.fkMunicipioorigen}" title="#{resourcesBundle.CreatePersonaTitle_fkMunicipioorigen}" >
+                        <f:selectItems value="#{municipioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.CreatePersonaLabel_fkTipoidentificacion}" for="fkTipoidentificacion" />
+                    <h:selectOneMenu id="fkTipoidentificacion" value="#{personaController.selected.fkTipoidentificacion}" title="#{resourcesBundle.CreatePersonaTitle_fkTipoidentificacion}" required="true" requiredMessage="#{resourcesBundle.CreatePersonaRequiredMessage_fkTipoidentificacion}">
+                        <f:selectItems value="#{tipoidentificacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personaController.create}" value="#{resourcesBundle.CreatePersonaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{resourcesBundle.CreatePersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.CreatePersonaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.CreateDetalleVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.CreateDetalleVentaLabel_pkDetalleVenta}" for="pkDetalleVenta" />
+                    <h:inputText id="pkDetalleVenta" value="#{detalleVentaController.selected.pkDetalleVenta}" title="#{resourcesBundle.CreateDetalleVentaTitle_pkDetalleVenta}" required="true" requiredMessage="#{resourcesBundle.CreateDetalleVentaRequiredMessage_pkDetalleVenta}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateDetalleVentaLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{detalleVentaController.selected.cantidad}" title="#{resourcesBundle.CreateDetalleVentaTitle_cantidad}" required="true" requiredMessage="#{resourcesBundle.CreateDetalleVentaRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateDetalleVentaLabel_subtotal}" for="subtotal" />
+                    <h:inputText id="subtotal" value="#{detalleVentaController.selected.subtotal}" title="#{resourcesBundle.CreateDetalleVentaTitle_subtotal}" required="true" requiredMessage="#{resourcesBundle.CreateDetalleVentaRequiredMessage_subtotal}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateDetalleVentaLabel_fkStock}" for="fkStock" />
+                    <h:selectOneMenu id="fkStock" value="#{detalleVentaController.selected.fkStock}" title="#{resourcesBundle.CreateDetalleVentaTitle_fkStock}" required="true" requiredMessage="#{resourcesBundle.CreateDetalleVentaRequiredMessage_fkStock}">
+                        <f:selectItems value="#{stockController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.CreateDetalleVentaLabel_fkVenta}" for="fkVenta" />
+                    <h:selectOneMenu id="fkVenta" value="#{detalleVentaController.selected.fkVenta}" title="#{resourcesBundle.CreateDetalleVentaTitle_fkVenta}" required="true" requiredMessage="#{resourcesBundle.CreateDetalleVentaRequiredMessage_fkVenta}">
+                        <f:selectItems value="#{ventaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleVentaController.create}" value="#{resourcesBundle.CreateDetalleVentaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleVentaController.prepareList}" value="#{resourcesBundle.CreateDetalleVentaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.CreateDetalleVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

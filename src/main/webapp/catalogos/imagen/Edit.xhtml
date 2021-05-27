@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditImagenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditImagenLabel_pkImagen}" for="pkImagen" />
+                    <h:inputText id="pkImagen" value="#{imagenController.selected.pkImagen}" title="#{resourcesBundle.EditImagenTitle_pkImagen}" required="true" requiredMessage="#{resourcesBundle.EditImagenRequiredMessage_pkImagen}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditImagenLabel_ruta}" for="ruta" />
+                    <h:inputText id="ruta" value="#{imagenController.selected.ruta}" title="#{resourcesBundle.EditImagenTitle_ruta}" required="true" requiredMessage="#{resourcesBundle.EditImagenRequiredMessage_ruta}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditImagenLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{imagenController.selected.descripcion}" title="#{resourcesBundle.EditImagenTitle_descripcion}" required="true" requiredMessage="#{resourcesBundle.EditImagenRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditImagenLabel_fkProducto}" for="fkProducto" />
+                    <h:selectOneMenu id="fkProducto" value="#{imagenController.selected.fkProducto}" title="#{resourcesBundle.EditImagenTitle_fkProducto}" required="true" requiredMessage="#{resourcesBundle.EditImagenRequiredMessage_fkProducto}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{imagenController.update}" value="#{resourcesBundle.EditImagenSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditImagenViewLink}"/>
+                <br />
+                <h:commandLink action="#{imagenController.prepareList}" value="#{resourcesBundle.EditImagenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditImagenIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

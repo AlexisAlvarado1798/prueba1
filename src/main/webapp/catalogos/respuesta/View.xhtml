@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewRespuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewRespuestaLabel_pkRespuesta}"/>
+                    <h:outputText value="#{respuestaController.selected.pkRespuesta}" title="#{resourcesBundle.ViewRespuestaTitle_pkRespuesta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewRespuestaLabel_respuesta}"/>
+                    <h:outputText value="#{respuestaController.selected.respuesta}" title="#{resourcesBundle.ViewRespuestaTitle_respuesta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewRespuestaLabel_fkClienteencuesta}"/>
+                    <h:outputText value="#{respuestaController.selected.fkClienteencuesta}" title="#{resourcesBundle.ViewRespuestaTitle_fkClienteencuesta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewRespuestaLabel_fkPregunta}"/>
+                    <h:outputText value="#{respuestaController.selected.fkPregunta}" title="#{resourcesBundle.ViewRespuestaTitle_fkPregunta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{respuestaController.destroyAndView}" value="#{resourcesBundle.ViewRespuestaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewRespuestaEditLink}"/>
+                <br />
+                <h:commandLink action="#{respuestaController.prepareCreate}" value="#{resourcesBundle.ViewRespuestaCreateLink}" />
+                <br />
+                <h:commandLink action="#{respuestaController.prepareList}" value="#{resourcesBundle.ViewRespuestaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewRespuestaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

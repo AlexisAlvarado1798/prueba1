@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditRespuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditRespuestaLabel_pkRespuesta}" for="pkRespuesta" />
+                    <h:inputText id="pkRespuesta" value="#{respuestaController.selected.pkRespuesta}" title="#{resourcesBundle.EditRespuestaTitle_pkRespuesta}" required="true" requiredMessage="#{resourcesBundle.EditRespuestaRequiredMessage_pkRespuesta}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditRespuestaLabel_respuesta}" for="respuesta" />
+                    <h:inputText id="respuesta" value="#{respuestaController.selected.respuesta}" title="#{resourcesBundle.EditRespuestaTitle_respuesta}" required="true" requiredMessage="#{resourcesBundle.EditRespuestaRequiredMessage_respuesta}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditRespuestaLabel_fkClienteencuesta}" for="fkClienteencuesta" />
+                    <h:selectOneMenu id="fkClienteencuesta" value="#{respuestaController.selected.fkClienteencuesta}" title="#{resourcesBundle.EditRespuestaTitle_fkClienteencuesta}" >
+                        <f:selectItems value="#{clienteencuestaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.EditRespuestaLabel_fkPregunta}" for="fkPregunta" />
+                    <h:selectOneMenu id="fkPregunta" value="#{respuestaController.selected.fkPregunta}" title="#{resourcesBundle.EditRespuestaTitle_fkPregunta}" required="true" requiredMessage="#{resourcesBundle.EditRespuestaRequiredMessage_fkPregunta}">
+                        <f:selectItems value="#{preguntaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{respuestaController.update}" value="#{resourcesBundle.EditRespuestaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditRespuestaViewLink}"/>
+                <br />
+                <h:commandLink action="#{respuestaController.prepareList}" value="#{resourcesBundle.EditRespuestaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditRespuestaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

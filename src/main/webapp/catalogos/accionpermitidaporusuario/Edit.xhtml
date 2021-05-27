@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditAccionpermitidaporusuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditAccionpermitidaporusuarioLabel_pkAccperusu}" for="pkAccperusu" />
+                    <h:inputText id="pkAccperusu" value="#{accionpermitidaporusuarioController.selected.pkAccperusu}" title="#{resourcesBundle.EditAccionpermitidaporusuarioTitle_pkAccperusu}" required="true" requiredMessage="#{resourcesBundle.EditAccionpermitidaporusuarioRequiredMessage_pkAccperusu}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditAccionpermitidaporusuarioLabel_fkAccionpermitida}" for="fkAccionpermitida" />
+                    <h:selectOneMenu id="fkAccionpermitida" value="#{accionpermitidaporusuarioController.selected.fkAccionpermitida}" title="#{resourcesBundle.EditAccionpermitidaporusuarioTitle_fkAccionpermitida}" required="true" requiredMessage="#{resourcesBundle.EditAccionpermitidaporusuarioRequiredMessage_fkAccionpermitida}">
+                        <f:selectItems value="#{accionpermitidaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.EditAccionpermitidaporusuarioLabel_fkUsuario}" for="fkUsuario" />
+                    <h:selectOneMenu id="fkUsuario" value="#{accionpermitidaporusuarioController.selected.fkUsuario}" title="#{resourcesBundle.EditAccionpermitidaporusuarioTitle_fkUsuario}" required="true" requiredMessage="#{resourcesBundle.EditAccionpermitidaporusuarioRequiredMessage_fkUsuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{accionpermitidaporusuarioController.update}" value="#{resourcesBundle.EditAccionpermitidaporusuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditAccionpermitidaporusuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{accionpermitidaporusuarioController.prepareList}" value="#{resourcesBundle.EditAccionpermitidaporusuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditAccionpermitidaporusuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

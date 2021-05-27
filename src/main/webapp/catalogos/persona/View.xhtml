@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewPersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_pkPersona}"/>
+                    <h:outputText value="#{personaController.selected.pkPersona}" title="#{resourcesBundle.ViewPersonaTitle_pkPersona}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_identificacion}"/>
+                    <h:outputText value="#{personaController.selected.identificacion}" title="#{resourcesBundle.ViewPersonaTitle_identificacion}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_nombres}"/>
+                    <h:outputText value="#{personaController.selected.nombres}" title="#{resourcesBundle.ViewPersonaTitle_nombres}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_apellidos}"/>
+                    <h:outputText value="#{personaController.selected.apellidos}" title="#{resourcesBundle.ViewPersonaTitle_apellidos}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_fechanacimiento}"/>
+                    <h:outputText value="#{personaController.selected.fechanacimiento}" title="#{resourcesBundle.ViewPersonaTitle_fechanacimiento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_direccion}"/>
+                    <h:outputText value="#{personaController.selected.direccion}" title="#{resourcesBundle.ViewPersonaTitle_direccion}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_correo}"/>
+                    <h:outputText value="#{personaController.selected.correo}" title="#{resourcesBundle.ViewPersonaTitle_correo}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_fkEstadocivil}"/>
+                    <h:outputText value="#{personaController.selected.fkEstadocivil}" title="#{resourcesBundle.ViewPersonaTitle_fkEstadocivil}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_fkGenero}"/>
+                    <h:outputText value="#{personaController.selected.fkGenero}" title="#{resourcesBundle.ViewPersonaTitle_fkGenero}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_fkMunicipioorigen}"/>
+                    <h:outputText value="#{personaController.selected.fkMunicipioorigen}" title="#{resourcesBundle.ViewPersonaTitle_fkMunicipioorigen}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPersonaLabel_fkTipoidentificacion}"/>
+                    <h:outputText value="#{personaController.selected.fkTipoidentificacion}" title="#{resourcesBundle.ViewPersonaTitle_fkTipoidentificacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personaController.destroyAndView}" value="#{resourcesBundle.ViewPersonaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewPersonaEditLink}"/>
+                <br />
+                <h:commandLink action="#{personaController.prepareCreate}" value="#{resourcesBundle.ViewPersonaCreateLink}" />
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{resourcesBundle.ViewPersonaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewPersonaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

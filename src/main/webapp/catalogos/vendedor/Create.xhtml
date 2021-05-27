@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.CreateVendedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.CreateVendedorLabel_pkVendedor}" for="pkVendedor" />
+                    <h:inputText id="pkVendedor" value="#{vendedorController.selected.pkVendedor}" title="#{resourcesBundle.CreateVendedorTitle_pkVendedor}" required="true" requiredMessage="#{resourcesBundle.CreateVendedorRequiredMessage_pkVendedor}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateVendedorLabel_fkPersona}" for="fkPersona" />
+                    <h:selectOneMenu id="fkPersona" value="#{vendedorController.selected.fkPersona}" title="#{resourcesBundle.CreateVendedorTitle_fkPersona}" required="true" requiredMessage="#{resourcesBundle.CreateVendedorRequiredMessage_fkPersona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vendedorController.create}" value="#{resourcesBundle.CreateVendedorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{vendedorController.prepareList}" value="#{resourcesBundle.CreateVendedorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.CreateVendedorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewPreguntaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewPreguntaLabel_pkPregunta}"/>
+                    <h:outputText value="#{preguntaController.selected.pkPregunta}" title="#{resourcesBundle.ViewPreguntaTitle_pkPregunta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPreguntaLabel_codigo}"/>
+                    <h:outputText value="#{preguntaController.selected.codigo}" title="#{resourcesBundle.ViewPreguntaTitle_codigo}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPreguntaLabel_pregunta}"/>
+                    <h:outputText value="#{preguntaController.selected.pregunta}" title="#{resourcesBundle.ViewPreguntaTitle_pregunta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewPreguntaLabel_fkEncuesta}"/>
+                    <h:outputText value="#{preguntaController.selected.fkEncuesta}" title="#{resourcesBundle.ViewPreguntaTitle_fkEncuesta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{preguntaController.destroyAndView}" value="#{resourcesBundle.ViewPreguntaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewPreguntaEditLink}"/>
+                <br />
+                <h:commandLink action="#{preguntaController.prepareCreate}" value="#{resourcesBundle.ViewPreguntaCreateLink}" />
+                <br />
+                <h:commandLink action="#{preguntaController.prepareList}" value="#{resourcesBundle.ViewPreguntaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewPreguntaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

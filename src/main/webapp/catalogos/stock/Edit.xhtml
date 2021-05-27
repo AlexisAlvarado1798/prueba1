@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditStockTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_pkStock}" for="pkStock" />
+                    <h:inputText id="pkStock" value="#{stockController.selected.pkStock}" title="#{resourcesBundle.EditStockTitle_pkStock}" required="true" requiredMessage="#{resourcesBundle.EditStockRequiredMessage_pkStock}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{stockController.selected.cantidad}" title="#{resourcesBundle.EditStockTitle_cantidad}" required="true" requiredMessage="#{resourcesBundle.EditStockRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_precioUnitario}" for="precioUnitario" />
+                    <h:inputText id="precioUnitario" value="#{stockController.selected.precioUnitario}" title="#{resourcesBundle.EditStockTitle_precioUnitario}" required="true" requiredMessage="#{resourcesBundle.EditStockRequiredMessage_precioUnitario}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{stockController.selected.codigo}" title="#{resourcesBundle.EditStockTitle_codigo}" required="true" requiredMessage="#{resourcesBundle.EditStockRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{stockController.selected.fecha}" title="#{resourcesBundle.EditStockTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{resourcesBundle.EditStockLabel_fkProducto}" for="fkProducto" />
+                    <h:selectOneMenu id="fkProducto" value="#{stockController.selected.fkProducto}" title="#{resourcesBundle.EditStockTitle_fkProducto}" required="true" requiredMessage="#{resourcesBundle.EditStockRequiredMessage_fkProducto}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{stockController.update}" value="#{resourcesBundle.EditStockSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditStockViewLink}"/>
+                <br />
+                <h:commandLink action="#{stockController.prepareList}" value="#{resourcesBundle.EditStockShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditStockIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

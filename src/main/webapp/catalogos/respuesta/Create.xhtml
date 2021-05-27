@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.CreateRespuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.CreateRespuestaLabel_pkRespuesta}" for="pkRespuesta" />
+                    <h:inputText id="pkRespuesta" value="#{respuestaController.selected.pkRespuesta}" title="#{resourcesBundle.CreateRespuestaTitle_pkRespuesta}" required="true" requiredMessage="#{resourcesBundle.CreateRespuestaRequiredMessage_pkRespuesta}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateRespuestaLabel_respuesta}" for="respuesta" />
+                    <h:inputText id="respuesta" value="#{respuestaController.selected.respuesta}" title="#{resourcesBundle.CreateRespuestaTitle_respuesta}" required="true" requiredMessage="#{resourcesBundle.CreateRespuestaRequiredMessage_respuesta}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateRespuestaLabel_fkClienteencuesta}" for="fkClienteencuesta" />
+                    <h:selectOneMenu id="fkClienteencuesta" value="#{respuestaController.selected.fkClienteencuesta}" title="#{resourcesBundle.CreateRespuestaTitle_fkClienteencuesta}" >
+                        <f:selectItems value="#{clienteencuestaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{resourcesBundle.CreateRespuestaLabel_fkPregunta}" for="fkPregunta" />
+                    <h:selectOneMenu id="fkPregunta" value="#{respuestaController.selected.fkPregunta}" title="#{resourcesBundle.CreateRespuestaTitle_fkPregunta}" required="true" requiredMessage="#{resourcesBundle.CreateRespuestaRequiredMessage_fkPregunta}">
+                        <f:selectItems value="#{preguntaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{respuestaController.create}" value="#{resourcesBundle.CreateRespuestaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{respuestaController.prepareList}" value="#{resourcesBundle.CreateRespuestaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.CreateRespuestaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

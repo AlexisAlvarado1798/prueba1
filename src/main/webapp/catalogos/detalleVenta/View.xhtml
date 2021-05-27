@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewDetalleVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewDetalleVentaLabel_pkDetalleVenta}"/>
+                    <h:outputText value="#{detalleVentaController.selected.pkDetalleVenta}" title="#{resourcesBundle.ViewDetalleVentaTitle_pkDetalleVenta}"/>
+                    <h:outputText value="#{resourcesBundle.ViewDetalleVentaLabel_cantidad}"/>
+                    <h:outputText value="#{detalleVentaController.selected.cantidad}" title="#{resourcesBundle.ViewDetalleVentaTitle_cantidad}"/>
+                    <h:outputText value="#{resourcesBundle.ViewDetalleVentaLabel_subtotal}"/>
+                    <h:outputText value="#{detalleVentaController.selected.subtotal}" title="#{resourcesBundle.ViewDetalleVentaTitle_subtotal}"/>
+                    <h:outputText value="#{resourcesBundle.ViewDetalleVentaLabel_fkStock}"/>
+                    <h:outputText value="#{detalleVentaController.selected.fkStock}" title="#{resourcesBundle.ViewDetalleVentaTitle_fkStock}"/>
+                    <h:outputText value="#{resourcesBundle.ViewDetalleVentaLabel_fkVenta}"/>
+                    <h:outputText value="#{detalleVentaController.selected.fkVenta}" title="#{resourcesBundle.ViewDetalleVentaTitle_fkVenta}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleVentaController.destroyAndView}" value="#{resourcesBundle.ViewDetalleVentaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewDetalleVentaEditLink}"/>
+                <br />
+                <h:commandLink action="#{detalleVentaController.prepareCreate}" value="#{resourcesBundle.ViewDetalleVentaCreateLink}" />
+                <br />
+                <h:commandLink action="#{detalleVentaController.prepareList}" value="#{resourcesBundle.ViewDetalleVentaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewDetalleVentaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

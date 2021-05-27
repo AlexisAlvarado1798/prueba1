@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewAccionpermitidaplantillaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaplantillaLabel_pkAccionpermitidaplantilla}"/>
+                    <h:outputText value="#{accionpermitidaplantillaController.selected.pkAccionpermitidaplantilla}" title="#{resourcesBundle.ViewAccionpermitidaplantillaTitle_pkAccionpermitidaplantilla}"/>
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaplantillaLabel_fkAccionpermitida}"/>
+                    <h:outputText value="#{accionpermitidaplantillaController.selected.fkAccionpermitida}" title="#{resourcesBundle.ViewAccionpermitidaplantillaTitle_fkAccionpermitida}"/>
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaplantillaLabel_fkPlantillaaccionpermitida}"/>
+                    <h:outputText value="#{accionpermitidaplantillaController.selected.fkPlantillaaccionpermitida}" title="#{resourcesBundle.ViewAccionpermitidaplantillaTitle_fkPlantillaaccionpermitida}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accionpermitidaplantillaController.destroyAndView}" value="#{resourcesBundle.ViewAccionpermitidaplantillaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewAccionpermitidaplantillaEditLink}"/>
+                <br />
+                <h:commandLink action="#{accionpermitidaplantillaController.prepareCreate}" value="#{resourcesBundle.ViewAccionpermitidaplantillaCreateLink}" />
+                <br />
+                <h:commandLink action="#{accionpermitidaplantillaController.prepareList}" value="#{resourcesBundle.ViewAccionpermitidaplantillaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewAccionpermitidaplantillaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.CreateAccionpermitidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.CreateAccionpermitidaLabel_pkAccionpermitida}" for="pkAccionpermitida" />
+                    <h:inputText id="pkAccionpermitida" value="#{accionpermitidaController.selected.pkAccionpermitida}" title="#{resourcesBundle.CreateAccionpermitidaTitle_pkAccionpermitida}" required="true" requiredMessage="#{resourcesBundle.CreateAccionpermitidaRequiredMessage_pkAccionpermitida}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateAccionpermitidaLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{accionpermitidaController.selected.codigo}" title="#{resourcesBundle.CreateAccionpermitidaTitle_codigo}" required="true" requiredMessage="#{resourcesBundle.CreateAccionpermitidaRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateAccionpermitidaLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{accionpermitidaController.selected.descripcion}" title="#{resourcesBundle.CreateAccionpermitidaTitle_descripcion}" required="true" requiredMessage="#{resourcesBundle.CreateAccionpermitidaRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateAccionpermitidaLabel_ruta}" for="ruta" />
+                    <h:inputText id="ruta" value="#{accionpermitidaController.selected.ruta}" title="#{resourcesBundle.CreateAccionpermitidaTitle_ruta}" required="true" requiredMessage="#{resourcesBundle.CreateAccionpermitidaRequiredMessage_ruta}"/>
+                    <h:outputLabel value="#{resourcesBundle.CreateAccionpermitidaLabel_fkAccionpermitida}" for="fkAccionpermitida" />
+                    <h:selectOneMenu id="fkAccionpermitida" value="#{accionpermitidaController.selected.fkAccionpermitida}" title="#{resourcesBundle.CreateAccionpermitidaTitle_fkAccionpermitida}" >
+                        <f:selectItems value="#{accionpermitidaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accionpermitidaController.create}" value="#{resourcesBundle.CreateAccionpermitidaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{accionpermitidaController.prepareList}" value="#{resourcesBundle.CreateAccionpermitidaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.CreateAccionpermitidaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditMunicipioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditMunicipioLabel_pkMunicipio}" for="pkMunicipio" />
+                    <h:inputText id="pkMunicipio" value="#{municipioController.selected.pkMunicipio}" title="#{resourcesBundle.EditMunicipioTitle_pkMunicipio}" required="true" requiredMessage="#{resourcesBundle.EditMunicipioRequiredMessage_pkMunicipio}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditMunicipioLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{municipioController.selected.codigo}" title="#{resourcesBundle.EditMunicipioTitle_codigo}" required="true" requiredMessage="#{resourcesBundle.EditMunicipioRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditMunicipioLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{municipioController.selected.nombre}" title="#{resourcesBundle.EditMunicipioTitle_nombre}" required="true" requiredMessage="#{resourcesBundle.EditMunicipioRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditMunicipioLabel_fkDepartamento}" for="fkDepartamento" />
+                    <h:selectOneMenu id="fkDepartamento" value="#{municipioController.selected.fkDepartamento}" title="#{resourcesBundle.EditMunicipioTitle_fkDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{municipioController.update}" value="#{resourcesBundle.EditMunicipioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditMunicipioViewLink}"/>
+                <br />
+                <h:commandLink action="#{municipioController.prepareList}" value="#{resourcesBundle.EditMunicipioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditMunicipioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

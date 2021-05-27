@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewAccionpermitidaporusuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaporusuarioLabel_pkAccperusu}"/>
+                    <h:outputText value="#{accionpermitidaporusuarioController.selected.pkAccperusu}" title="#{resourcesBundle.ViewAccionpermitidaporusuarioTitle_pkAccperusu}"/>
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaporusuarioLabel_fkAccionpermitida}"/>
+                    <h:outputText value="#{accionpermitidaporusuarioController.selected.fkAccionpermitida}" title="#{resourcesBundle.ViewAccionpermitidaporusuarioTitle_fkAccionpermitida}"/>
+                    <h:outputText value="#{resourcesBundle.ViewAccionpermitidaporusuarioLabel_fkUsuario}"/>
+                    <h:outputText value="#{accionpermitidaporusuarioController.selected.fkUsuario}" title="#{resourcesBundle.ViewAccionpermitidaporusuarioTitle_fkUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{accionpermitidaporusuarioController.destroyAndView}" value="#{resourcesBundle.ViewAccionpermitidaporusuarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewAccionpermitidaporusuarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{accionpermitidaporusuarioController.prepareCreate}" value="#{resourcesBundle.ViewAccionpermitidaporusuarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{accionpermitidaporusuarioController.prepareList}" value="#{resourcesBundle.ViewAccionpermitidaporusuarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewAccionpermitidaporusuarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{resourcesBundle.ListDetalleVentaEmpty}" rendered="#{detalleVentaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{detalleVentaController.items.rowCount > 0}">
+                    <h:outputText value="#{detalleVentaController.pagination.pageFirstItem + 1}..#{detalleVentaController.pagination.pageLastItem + 1}/#{detalleVentaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{detalleVentaController.previous}" value="#{resourcesBundle.Previous} #{detalleVentaController.pagination.pageSize}" rendered="#{detalleVentaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{detalleVentaController.next}" value="#{resourcesBundle.Next} #{detalleVentaController.pagination.pageSize}" rendered="#{detalleVentaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{detalleVentaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle_pkDetalleVenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pkDetalleVenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle_subtotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subtotal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle_fkStock}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkStock}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{resourcesBundle.ListDetalleVentaTitle_fkVenta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fkVenta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{detalleVentaController.prepareView}" value="#{resourcesBundle.ListDetalleVentaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalleVentaController.prepareEdit}" value="#{resourcesBundle.ListDetalleVentaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{detalleVentaController.destroy}" value="#{resourcesBundle.ListDetalleVentaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{detalleVentaController.prepareCreate}" value="#{resourcesBundle.ListDetalleVentaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ListDetalleVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

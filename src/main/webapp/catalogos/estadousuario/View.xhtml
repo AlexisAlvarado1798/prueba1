@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.ViewEstadousuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{resourcesBundle.ViewEstadousuarioLabel_pkEstadousuario}"/>
+                    <h:outputText value="#{estadousuarioController.selected.pkEstadousuario}" title="#{resourcesBundle.ViewEstadousuarioTitle_pkEstadousuario}"/>
+                    <h:outputText value="#{resourcesBundle.ViewEstadousuarioLabel_fechainicio}"/>
+                    <h:outputText value="#{estadousuarioController.selected.fechainicio}" title="#{resourcesBundle.ViewEstadousuarioTitle_fechainicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{resourcesBundle.ViewEstadousuarioLabel_fechafin}"/>
+                    <h:outputText value="#{estadousuarioController.selected.fechafin}" title="#{resourcesBundle.ViewEstadousuarioTitle_fechafin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{resourcesBundle.ViewEstadousuarioLabel_fkEstado}"/>
+                    <h:outputText value="#{estadousuarioController.selected.fkEstado}" title="#{resourcesBundle.ViewEstadousuarioTitle_fkEstado}"/>
+                    <h:outputText value="#{resourcesBundle.ViewEstadousuarioLabel_fkUsuario}"/>
+                    <h:outputText value="#{estadousuarioController.selected.fkUsuario}" title="#{resourcesBundle.ViewEstadousuarioTitle_fkUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estadousuarioController.destroyAndView}" value="#{resourcesBundle.ViewEstadousuarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{resourcesBundle.ViewEstadousuarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{estadousuarioController.prepareCreate}" value="#{resourcesBundle.ViewEstadousuarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{estadousuarioController.prepareList}" value="#{resourcesBundle.ViewEstadousuarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.ViewEstadousuarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

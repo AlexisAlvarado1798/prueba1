@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{resourcesBundle.EditGeneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{resourcesBundle.EditGeneroLabel_pkGenero}" for="pkGenero" />
+                    <h:inputText id="pkGenero" value="#{generoController.selected.pkGenero}" title="#{resourcesBundle.EditGeneroTitle_pkGenero}" required="true" requiredMessage="#{resourcesBundle.EditGeneroRequiredMessage_pkGenero}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditGeneroLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{generoController.selected.codigo}" title="#{resourcesBundle.EditGeneroTitle_codigo}" required="true" requiredMessage="#{resourcesBundle.EditGeneroRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{resourcesBundle.EditGeneroLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{generoController.selected.descripcion}" title="#{resourcesBundle.EditGeneroTitle_descripcion}" required="true" requiredMessage="#{resourcesBundle.EditGeneroRequiredMessage_descripcion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{generoController.update}" value="#{resourcesBundle.EditGeneroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{resourcesBundle.EditGeneroViewLink}"/>
+                <br />
+                <h:commandLink action="#{generoController.prepareList}" value="#{resourcesBundle.EditGeneroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{resourcesBundle.EditGeneroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
